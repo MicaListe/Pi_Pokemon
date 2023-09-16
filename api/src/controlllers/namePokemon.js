@@ -1,28 +1,42 @@
-const axios= require ("axios")
-const namePokemon = async (req,res)=>{
-    try{
-        const {name} = req.query
-        const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${name}`);
-        if(response.status===200){
-            const nameMinuscula = name.toLowerCase()
-            const pokemonMin = pokemon.filter((pokemons)=>pokemons.toLowerCase().includes(nameMinuscula))
-        
-        // const nameMayuscula = name.toUpperCase()
-        // const pokemonMayus = pokemon.filter((pokemons)=>pokemons.toUpperCase().includes(nameMayuscula))
+const searchByName = async (name) => {
+    //Busca todos los pokemones que coincidan con el mismo nombre pasado por query
+    const {results} = (await axios.get("https://pokeapi.co/api/v2/pokemon?limit=10")).data;
+    const pokemonsFiltered = results.filter((pokemon) => pokemon.name === name);
+    const pokemonPromises = pokemonsFiltered.map((pokemon) =>
+    axios.get(pokemon.url).then((response) => cleanArray(response.data))
+);
+const pokemonsApi = await Promise.all(pokemonPromises);
 
-        // if(pokemonMayus || pokemonMin){
-        //     return res.status(200).json({pokemonMin})
-        // }
-            if(pokemonMin!==0){
-                return res.status(200).json({pokemonMin})
-            }   
+    // Busca en la BDD algun pokemon con el mismo nombre enviado por query
+    // Busca con el operador "iLike" el name ignorando si tiene mayúsculas o minúsculas
+    const pokemon = await Pokemons.findAll({
+        where: {
+            name: {
+                [Op.iLike]: `%${name}%`,
+            },
+        },
+    });
+    return [...pokemonsApi, ...pokemon];
+};
 
-            if(!name){
-                return res.status(404).json({message:"El Pokemon no existe"})   
-            }
+handler:
+const searchPokemonByName = async (req, res) => {
+
+    
+    const { name } = req.query
+    try {
+    //si me llega un nombre ejecuto la funcion para buscarlo
+        if(name){
+        const pokemonByName = await searchByName(name);
+        if (!pokemonByName) res.status(404).json({ message: "Nombre de pokemon no encontrado" });
+        res.status(200).json(pokemonByName);
         }
-    }catch(error){
-        res.status(500).json({message: "Error del servidor"})
+
+    //si no me llego un nombre por query que me entregue todos los pokemones 
+        const allPokemons = await getAllPokemons();
+        res.status(200).json(allPokemons)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ error: error.message });
     }
-}
-module.export= namePokemon;
+};

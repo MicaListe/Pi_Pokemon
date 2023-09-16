@@ -9,7 +9,7 @@ const PORT = 3001
 require('./db.js');
 
 const server = express();
-
+server.use(express.json())
 
 server.name = 'API';
 
