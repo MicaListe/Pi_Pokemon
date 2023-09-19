@@ -75,9 +75,7 @@ const { Op } = require("sequelize");
 
 const name = async (req, res) => {
   const { name } = req.query;
-  console.log(name)
-
-
+  
   try {
     // Buscar en la base de datos
     const dbPokemons = await Pokemon.findOne({

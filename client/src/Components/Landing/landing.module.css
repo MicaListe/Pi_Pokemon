@@ -1,0 +1,19 @@
+.pikachu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+}
+.pokemonImg {
+    width: 2000px;
+    height: 1000px;
+}
+.boton{
+    position: absolute;
+  top: 90%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+ 
+ 

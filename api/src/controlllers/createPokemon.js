@@ -10,19 +10,19 @@ const createPokemon = async (req,res)=>{
         }
 
         const pokemon= await Pokemon.findOrCreate({
-            where: {name:name, hp:hp, defense:defense, attack:attack, speed:speed, height:height, weight:weight}
+            where: {name:name, hp:hp, defense:defense, attack:attack, speed:speed, height:height, weight:weight, types:types}
         })
 
-        const newPokemon = await Pokemon.create({
-            name: name.toLowerCase(),
-            hp,
-            attack,
-            defense, 
-            speed,
-            height,
-            weight
-        })
-        res.status(200).json(newPokemon)
+        // const newPokemon = await Pokemon.create({
+        //     name: name.toLowerCase(),
+        //     hp,
+        //     attack,
+        //     defense, 
+        //     speed,
+        //     height,
+        //     weight
+        // })
+        res.status(200).json(pokemon)
 
         const typesName= types.map(type => type.name);
         const pokemonType= await Type.findAll({where:{name: typesName}})
@@ -47,4 +47,5 @@ const createPokemon = async (req,res)=>{
         res.status(500).json({error:error.message})
     }
 }
+
 module.exports = createPokemon;

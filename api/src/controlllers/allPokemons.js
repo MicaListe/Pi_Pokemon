@@ -33,19 +33,19 @@ const allPokemons = async (req, res) => {
               image: sprites.other.dream_world.front_default,
             };
   
-            await Pokemon.create({
-              id: datosPokemon.id,
-              name: datosPokemon.name,
-              hp: datosPokemon.hp,
-              defense: datosPokemon.defense,
-              attack: datosPokemon.attack,
-              speed: datosPokemon.speed,
-              height: datosPokemon.height,
-              weight: datosPokemon.weight,
-            });
+          //   await Pokemon.create({
+          //     id: datosPokemon.id,
+          //     name: datosPokemon.name,
+          //     hp: datosPokemon.hp,
+          //     defense: datosPokemon.defense,
+          //     attack: datosPokemon.attack,
+          //     speed: datosPokemon.speed,
+          //     height: datosPokemon.height,
+          //     weight: datosPokemon.weight,
+          //   });
   
-            return datosPokemon; // Devuelve los datos del Pokémon procesado
-          })
+             return datosPokemon; // Devuelve los datos del Pokémon procesado
+           })
         );
   
         // Espera a que se resuelvan todas las promesas de Pokémon antes de enviar una respuesta

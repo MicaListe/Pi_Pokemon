@@ -4,6 +4,8 @@ const {Pokemon}= require("../db")
 const detailPokemon = async (req,res)=>{
     try {
         const id = req.params.id;
+      
+        
         const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
         if(response.status===200){
             const pokemonData = response.data
@@ -20,6 +22,16 @@ const detailPokemon = async (req,res)=>{
                 image: pokemonData.sprites.other.dream_world.front_default
             }
             res.json(pokemon);
+            
+            
+        }else {
+            const buscar= await Pokemon.findOne({where: {id:id}})
+            if(buscar){
+                res.status(200).json(buscar)
+            }else{
+               res.status(404).json({message: "Not found"}) 
+            }
+        }
             const agregarTypes = Pokemon.findOne({
                 where: {
                     id: id,
@@ -34,14 +46,10 @@ const detailPokemon = async (req,res)=>{
                 
             });
             return agregarTypes
-            
-        }else{
-            res.status(404).json({message: "Not found"})
-        }
-        }catch (error) {
-          console.error(error);
-          res.status(500).json({ error: 'F.' });
-        }
+    }catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'F.' });
+    }
 }
 
 module.exports= detailPokemon
