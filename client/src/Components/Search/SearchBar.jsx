@@ -8,10 +8,14 @@ export default function SearchBar ({onSearch}){
         let value= event.target.value //Captura el valor ingresado
         setName(value) //Actualiza el estado
     }
+    const handleSearch = () => {
+        console.log("Valor de name:", name); // Agrega esta línea de depuración
+        onSearch(name);
+      }
     return(
         <div>
             <input className={styles.input} type="search" onChange={handleChange} value={name} placeholder="Buscar personaje"></input>
-            <button className={styles.btn} onClick={()=>onSearch(name)}>Buscar</button>
+            <button className={styles.btn} onClick={handleSearch}>Buscar</button>
         </div>
     )
 }

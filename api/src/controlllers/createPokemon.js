@@ -1,51 +1,106 @@
-const {Pokemon,Type}= require("../db")
+// const {Pokemon,Type}= require("../db")
 
-const createPokemon = async (req,res)=>{
-    try{
-        const {name, hp, defense, attack, speed, height, weight, types} = req.body
-        console.log(req.body)
+// const createPokemon = async (req,res)=>{
+//     try{
+//         const {name, hp, defense, attack, speed, height, weight, types} = req.body
+//         console.log(req.body)
 
-        if(!name || !hp || !defense || !attack || !speed || !height || !weight){
-            return res.status(401).json({message:"Faltan datos"})
-        }
+//         if(!name || !hp || !defense || !attack || !speed || !height || !weight){
+//             return res.status(401).json({message:"Faltan datos"})
+//         }
 
-        const pokemon= await Pokemon.findOrCreate({
-            where: {name:name, hp:hp, defense:defense, attack:attack, speed:speed, height:height, weight:weight, types:types}
-        })
 
-        // const newPokemon = await Pokemon.create({
-        //     name: name.toLowerCase(),
-        //     hp,
-        //     attack,
-        //     defense, 
-        //     speed,
-        //     height,
-        //     weight
-        // })
-        res.status(200).json(pokemon)
+//         const validTypes = await Type.findAll({ where: { name: types } });
 
-        const typesName= types.map(type => type.name);
-        const pokemonType= await Type.findAll({where:{name: typesName}})
-        await pokemon.setTypes(pokemonType)
+//         // if (validTypes[0].dataValues.name.length !== types.length) {
+//         //     return res.status(400).json({ message: "Tipo de Pokémon inexistente" });
+//         // }
 
-        const pokemonCreated = Pokemon.findOne({
-            where: {
-                id:id,
-                name: name,
-            },
-            include: {
-                attributes: ["name"],
-                model: Type,
-                through: {
-                    attributes: [],
-                },
-            }
-        });
+//         const pokemon= await Pokemon.findOrCreate({
+//             where: {
+//                 name, 
+//                 hp, 
+//                 defense, 
+//                 attack, 
+//                 speed, 
+//                 height, 
+//                 weight}
+//         })
+//         await pokemon.setTypes(validTypes)
+//         res.status(200).json(pokemon)
 
-        return pokemonCreated
-    }catch(error){
-        res.status(500).json({error:error.message})
+//         // const typesName= types.map(type => type.name);
+//         // const pokemonType= await Type.findAll({where:{name: typesName}})
+       
+
+//         // const pokemonCreated = Pokemon.findOne({
+//         //     where: {
+//         //         id:id,
+//         //         name: name,
+//         //     },
+//         //     include: {
+//         //         attributes: ["name"],
+//         //         model: Type,
+//         //         through: {
+//         //             attributes: [],
+//         //         },
+//         //     }
+//         // });
+
+//         // return pokemonCreated
+//     }catch(error){
+//         res.status(500).json({error:error.message})
+//     }
+// }
+
+// module.exports = createPokemon;
+const { Pokemon, Type } = require("../db");
+
+const createPokemon = async (req, res) => {
+  try {
+    const { name, hp, defense, attack, speed, height, weight, types } =
+      req.body;
+
+    if (
+      !name ||
+      !hp ||
+      !defense ||
+      !attack ||
+      !speed ||
+      !height ||
+      !weight ||
+      !types
+    ) {
+      return res.status(401).json({ message: "Faltan datos" });
     }
-}
+
+    // Verificar si los tipos proporcionados existen en la base de datos
+    const validTypes = await Type.findAll({ where: { name: types } });
+
+    // if (validTypes[0].dataValues.name.length !== types.length) {
+    //   return res.status(400).json({ message: "Tipo de Pokémon inexistente" });
+    // }
+
+    const [pokemon, created] = await Pokemon.findOrCreate({
+      where: {
+        name: name.toLowerCase(),
+        hp,
+        defense,
+        attack,
+        speed,
+        height,
+        weight,
+      },
+    });
+
+    // Asociar el Pokémon con los tipos
+    await pokemon.setTypes(validTypes);
+
+    return res.status(200).json(pokemon);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ error: error.message });
+  }
+};
 
 module.exports = createPokemon;

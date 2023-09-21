@@ -12,25 +12,31 @@ import NavBar from '../src/Components/NavBar/Navbar'
 function App() {
   const location= useLocation()
   const[characters, setCharacters] = useState([])
+
   async function onSearch(name){
+     
     try{
-        const {data}= await axios(`https://pokeapi.co/api/v2/pokemon/${name.toLowerCase()}`)
-        if(data.name === name.toLowerCase()){
-          // const personajeExist= personaje.find((perso)=>perso.name === data.name)
-          // return personajeExist
-          // if (!personajeExist){
-          //   setPersonaje((personaje)=>[...personaje,data])
-          // }else{
-          //   window.alert("El personaje ya fue agregado")
-          // }
-          return data
+         const minuscula= name.toLowerCase()
+        const response= await axios.get(`http://localhost:3001/pokemons-name?name=${minuscula}`)
+  
+        if(response.data && response.data.name){
+          const pokemonName= response.data.name.toLowerCase()
+          const personajeExist= characters.some((character)=>character.name === pokemonName)
+          
+          if (!personajeExist){
+            setCharacters((char)=>[...char, { name: pokemonName }])
+          }else{
+            window.alert("El personaje ya fue agregado")
+          }
+          
         }else{
           window.alert("No existe el personaje con ese nombre")
         }
       }catch(error){
-      window.alert(error.response.data) 
+      window.alert("Error del servidor") 
     }
   }
+  
   
   function onClose(id){
     const {data}= axios(`https://pokeapi.co/api/v2/pokemon/${id}`)
