@@ -5,8 +5,8 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('pokemon', {
     id:{
-      type:DataTypes.UUID, //PARA QUE NO SE REPITA EL ID
-      defaultValue: DataTypes.UUIDV4, //(o uuid4)
+      type:DataTypes.INTEGER, //PARA QUE NO SE REPITA EL ID
+      // defaultValue: DataTypes.UUIDV4, //(o uuid4)
       primaryKey: true, 
       allowNull:false
     },

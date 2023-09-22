@@ -4,22 +4,37 @@ import { useState,useEffect } from "react"
 
 
 export default function Detail(){
-    try{
+    
        const {id} = useParams() 
        const [character, setCharacter]= useState([])
+       const [loading, setLoading]= useState(true)
+
        useEffect(()=>{
             axios.get(`http://localhost:3001/pokemons/${id}`).then(({data})=>{
                 if(data.name){
                     setCharacter(data)
                 }else{
                     window.alert("No hay personajes con ese id")
-                }
+                }   
             })
-           return setCharacter({})
+
+            .catch((error)=>{
+                console.error(error)
+                window.alert("Error del servicio")
+            })
+
+            .finally(()=>{
+                setLoading(false)
+            })
+
         },[id])
-    return(
+        
+        return(
         <div>
-            {character.name && (
+            {loading ? (
+                <p>Cargando...</p>
+            ):
+            character.name && (
                 <div>
                 <h2>{character.name}</h2>
                 <p><b>Attack: </b>{character.attack}</p>
@@ -31,9 +46,5 @@ export default function Detail(){
                 </div>
             )}
         </div>
-    )
-    }catch(error){
-        window.alert("Error del servidor")
-    }
-    
+    ) 
 }

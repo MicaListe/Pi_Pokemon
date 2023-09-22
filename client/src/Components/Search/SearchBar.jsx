@@ -11,7 +11,8 @@ export default function SearchBar ({onSearch}){
     const handleSearch = () => {
         console.log("Valor de name:", name); // Agrega esta línea de depuración
         onSearch(name);
-      }
+    }
+    
     return(
         <div>
             <input className={styles.input} type="search" onChange={handleChange} value={name} placeholder="Buscar personaje"></input>

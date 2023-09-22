@@ -61,16 +61,7 @@ const createPokemon = async (req, res) => {
     const { name, hp, defense, attack, speed, height, weight, types } =
       req.body;
 
-    if (
-      !name ||
-      !hp ||
-      !defense ||
-      !attack ||
-      !speed ||
-      !height ||
-      !weight ||
-      !types
-    ) {
+    if (!name || !hp || !defense || !attack || !speed || !height || !weight || !types) {
       return res.status(401).json({ message: "Faltan datos" });
     }
 
@@ -93,8 +84,23 @@ const createPokemon = async (req, res) => {
       },
     });
 
+    const TypeModels = await Pokemon.findAll({
+      where: {
+         name// Utiliza los nombres de los países proporcionados
+      },
+      include: {
+          attributes: ["name"],
+          model: Type,
+          through: {
+              attributes: [],
+          },
+      }
+  });
+
     // Asociar el Pokémon con los tipos
-    await pokemon.setTypes(validTypes);
+    // await pokemon.setTypes(validTypes);
+    // await pokemon.setTypes(TypeModels);
+    await pokemon.addTypes(TypeModels)
 
     return res.status(200).json(pokemon);
   } catch (error) {

@@ -16,7 +16,7 @@ function App() {
   async function onSearch(name){
      
     try{
-         const minuscula= name.toLowerCase()
+        const minuscula= name.toLowerCase()
         const response= await axios.get(`http://localhost:3001/pokemons-name?name=${minuscula}`)
   
         if(response.data && response.data.name){
