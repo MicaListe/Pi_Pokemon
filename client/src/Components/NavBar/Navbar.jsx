@@ -7,11 +7,11 @@ import styles from "./NavBar.module.css"
         <div className={styles.menu}>
         <nav>
             <SearchBar onSearch={onSearch}></SearchBar>
-            <ul className={styles.botonHome}>
-                <li><Link to="/home">Home</Link></li>
+            <ul>
+                <button className={styles.botonHome}><Link to="/home">Home</Link></button>
             </ul>
-            <ul className={styles.botonForm}>
-                <li><Link to="/form">Form</Link></li>
+            <ul >
+                <button className={styles.botonForm}><Link to="/form">Create Pokemon</Link></button>
             </ul>
         </nav>
         </div>

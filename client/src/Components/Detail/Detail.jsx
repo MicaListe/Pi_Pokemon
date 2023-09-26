@@ -1,6 +1,7 @@
 import axios from "axios"
 import { useParams } from "react-router-dom"
 import { useState,useEffect } from "react"
+import styles from "./Detail.module.css"
 
 
 export default function Detail(){
@@ -30,9 +31,9 @@ export default function Detail(){
         },[id])
         
         return(
-        <div>
+        <div >
             {loading ? (
-                <p>Cargando...</p>
+                <p></p>
             ):
             character.name && (
                 <div>

@@ -1,19 +1,36 @@
 .pikachu {
     display: flex;
+    background-color: #aa6ce4;
+    /* #5c3968; */
     align-items: center;
     justify-content: center;
-    height: 400px;
-}
-.pokemonImg {
-    width: 2000px;
-    height: 1000px;
-}
-.boton{
-    position: absolute;
-  top: 90%;
-  left: 50%;
-  transform: translate(-50%, -50%)
+    height: 700px;
+    width:15 00px
 }
 
- 
- 
+.pokemonImg {
+    width: 700px;
+    height: 715px;
+    margin-left:150px
+}
+
+.titulo{
+    font-size: 60px;
+    margin-left:400px;
+    font-family: 'Crimson Text', serif;
+}
+
+.explicacion{
+    margin-left:400px;
+    font-size:38px;
+    font-family:'Crimson Text', serif;
+
+}
+
+.boton{
+position: absolute;
+  top: 750px;
+  right:1135px;
+  transform: translate(-50%, -50%);
+  background-color: rgb(220, 225, 225);
+}

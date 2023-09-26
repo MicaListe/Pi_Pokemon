@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Card from "../Card pokemon/Card";
+import styles from "./pokeCards.module.css"
 
 export default function PokeCards({ onClose }) {
   const [data, setData] = useState([]);
@@ -38,11 +39,11 @@ export default function PokeCards({ onClose }) {
   };
 
   if (loading) {
-    return <div>Cargando...</div>;
+    return <div className={styles.loader}/>;
   }
 
   return (
-    <div>
+    <div className={styles.FlexContainer}>
       {data.map((element) => (
         <Card
           key={element.id}

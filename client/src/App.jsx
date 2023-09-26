@@ -11,6 +11,7 @@ import NavBar from '../src/Components/NavBar/Navbar'
 
 function App() {
   const location= useLocation()
+  const navigate= useNavigate()
   const[characters, setCharacters] = useState([])
 
   async function onSearch(name){
@@ -22,7 +23,9 @@ function App() {
         if(response.data && response.data.name){
           const pokemonName= response.data.name.toLowerCase()
           const personajeExist= characters.some((character)=>character.name === pokemonName)
-          
+          if (response.data && response.data.id) { 
+            navigate(`/Detail/${response.data.id}`)
+          }
           if (!personajeExist){
             setCharacters((char)=>[...char, { name: pokemonName }])
           }else{
