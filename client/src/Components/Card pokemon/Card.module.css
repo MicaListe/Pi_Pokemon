@@ -19,8 +19,6 @@
     right: 80px;
 } 
   
-
-  
 .container .box {
     width: 300px;
     height: 350px;
@@ -44,6 +42,9 @@
     font-family: 'EB Garamond', serif;
     color: rgb(255, 254, 254);
     margin-top: 5px
+}
+.title:hover{
+    color:#989bdee7;
 }
 
 .img{

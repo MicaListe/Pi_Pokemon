@@ -7,6 +7,7 @@ import Detail from "../src/Components/Detail/Detail"
 import PokeCards from './Components/Cards pokemon/pokeCards'
 import Landing from "../src/Components/Landing/Landing page"
 import NavBar from '../src/Components/NavBar/Navbar'
+import Filtros from "../src/Components/Filtros/Filtros"
 
 
 function App() {
@@ -41,17 +42,17 @@ function App() {
   }
   
   
-  function onClose(id){
-    const {data}= axios(`https://pokeapi.co/api/v2/pokemon/${id}`)
-    setCharacters(characters.filter((characters)=>characters.id !== data.id))
-  }
+  // function onClose(id){
+  //   const {data}= axios(`https://pokeapi.co/api/v2/pokemon/${id}`)
+  //   setCharacters(characters.filter((characters)=>characters.id !== data.id))
+  // }
 
   return (
     <div>
       {location.pathname!=="/" && <NavBar onSearch={onSearch}/>}
       <Routes>
         <Route path="/" element={<Landing/>}/>
-        <Route path="/home" element={<PokeCards characters={characters} onClose={onClose}/>}/>
+        <Route path="/home" element={<PokeCards characters={characters}  />}/>
         <Route path="/detail/:id" element={<Detail/>}/>
         <Route path="/form" element={<Form/>}/>
       </Routes>

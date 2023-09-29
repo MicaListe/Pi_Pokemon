@@ -1,0 +1,87 @@
+
+.container {
+  display: flex;
+  height: 1000px;
+  background: linear-gradient(to right, #f5f2f2, #f5bca5); 
+  width:2100px;
+}
+
+.name{
+  /* margin-left:60px; */
+  /* margin-top: -10px */
+  font-size: 50px;
+  /* color:#646cffaa */
+}
+
+.img{
+  margin-left:200px;
+  height: 500px;
+  margin-top:200px;
+}
+  
+.rectangle2 {
+  margin-left:200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.progress {
+  margin-top: 40px;
+  text-align: left;
+  margin-left:200px;
+  font-size: 25px;
+  /* color:#646cffaa */
+  color: black
+ 
+}
+  
+.progressBar {
+  padding: 10px;
+  border-radius: 4px;
+}
+  
+.skill {
+  display: flex;
+  align-items: center;
+  margin: 5px ;
+}
+  
+.progressBarContainer {
+  width: 150px;
+  background-color: #ddd;
+  height: 10px;
+  border-radius: 4px;
+  margin-left: 20px;
+  margin-top: 10px
+}
+  
+.progressBarFill {
+  height: 100%;
+  border-radius: 4px;
+  background-color: #0077ff;
+  
+}
+.weight .progressBarContainer {
+  width: 17px; 
+  background-color: #ddd;
+  height: 10px;
+  border-radius: 4px;
+}
+.weight .progressBarFill {
+  height: 100%;
+  border-radius: 4px;
+  background-color: #0077ff; /* Color de fondo de la barra de progreso */
+  width: 70%; /* Ajusta este valor según el porcentaje deseado (por ejemplo, 70%) */
+}
+
+.porcentaje{
+  margin-left:180px;
+  margin-top:-15px;
+  font-size:15px
+}
+
+.habilidad{
+  
+}

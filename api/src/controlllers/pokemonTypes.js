@@ -62,7 +62,7 @@ const pokemonTypes = async (req, res) => {
         // }
       }
 
-      return res.status(201).json({ message: "Tipos de Pokémon creados" });
+      return res.status(201).json(typesArray);
     } else {
       return res
         .status(404)

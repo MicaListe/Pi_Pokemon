@@ -5,11 +5,11 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('pokemon', {
     id:{
-      type:DataTypes.INTEGER, //PARA QUE NO SE REPITA EL ID
-      // defaultValue: DataTypes.UUIDV4, //(o uuid4)
-      autoIncrement:true,
+      type:DataTypes.UUID, //PARA QUE NO SE REPITA EL ID
+      defaultValue: DataTypes.UUIDV4, //(o uuid4)
+      // autoIncrement:true,
       primaryKey: true, 
-      allowNull:false
+      // allowNull:false
     },
     name: {
       type: DataTypes.STRING,

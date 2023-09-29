@@ -38,7 +38,7 @@
     height: 38px;
     width: 65px;
     display: flex;
-    justify-content: center; 
+    align-items: center;
     color: #646cffaa;
     background-color: white;
     border: 2px solid #646cffaa;

@@ -4,7 +4,7 @@ const createPokemon = async (req, res) => {
   try {
     const { name, hp, defense, attack, speed, height, weight, types } =
       req.body;
-
+      console.log(req.body)
     if (
       !name ||
       !hp ||
@@ -15,7 +15,7 @@ const createPokemon = async (req, res) => {
       !weight ||
       !types
     ) {
-      return res.status(401).json({ message: "Faltan datos" });
+      return res.status(400).json({ message: "Faltan datos" });
     }
 
     // Verificar si los tipos proporcionados existen en la base de datos
