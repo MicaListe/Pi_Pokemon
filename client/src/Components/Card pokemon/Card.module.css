@@ -3,10 +3,7 @@
     font-family: sans-serif;
     display: flex;
     z-index: 1;
-    /* justify-content:space-between;
-    padding-left: 20px; */
     top:100px
-    
 }
   
 .container::before, .container::after {

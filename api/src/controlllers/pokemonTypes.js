@@ -16,12 +16,6 @@ const pokemonTypes = async (req, res) => {
           },
         });
 
-        // Puedes dejar estos comentarios para mostrar mensajes si es necesario.
-        // if (created) {
-        //   console.log(Tipo de Pokémon "${typeName}" creado.);
-        // } else {
-        //   console.log(Tipo de Pokémon "${typeName}" ya existe en la base de datos.);
-        // }
       }
 
       // Devuelve el arreglo de tipos en lugar del mensaje

@@ -7,10 +7,7 @@
 }
 
 .name{
-  /* margin-left:60px; */
-  /* margin-top: -10px */
   font-size: 50px;
-  /* color:#646cffaa */
 }
 
 .img{
@@ -82,7 +79,7 @@
   font-size:15px
 }
 
-/* HTML: <div class="loader"></div> */
+
 .loader {
   height: 200px;
   aspect-ratio: 1;
