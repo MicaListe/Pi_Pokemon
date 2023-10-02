@@ -3,12 +3,14 @@ import { useEffect } from "react"
 import styles from "./Form.module.css"
 import axios from "axios"
 import validation from "./validations"
+import ash from "../../assets/ash.png"
+import burbuja from "../../assets/burbuja.png"
 
 export default function Form(){
 
     const initialForm={
         name:"",
-        image:"",
+        image:null,
         attack:0,
         defense:0,
         speed:0,
@@ -35,6 +37,8 @@ export default function Form(){
     const handleChange= (event)=>{
         const property= event.target.name;
         const value= event.target.value;
+        console.log(property)
+        console.log(value)
         setErrors(validation({...data,[property]:value}))
         setData({...data,[property]:value})
     }
@@ -43,9 +47,7 @@ export default function Form(){
     const handleChangeSelect = (event)=>{
         const type= event.target.value;
         const checked= event.target.checked
-        console.log(type)
-        console.log(checked)
-
+        
         if(checked){
             setSelectedTypes([type, ...selectedType]) //Agrega los tipos seleccionados al array
            
@@ -59,87 +61,96 @@ export default function Form(){
         event.preventDefault()
         const updatedData = { types: selectedType, ...data }
         setData([updatedData])
+        console.log(data)
         try{
-            
-            await axios.post(`http://localhost:3001/pokemons`, updatedData)
-            
+            await axios.post(`http://localhost:3001/pokemons`, updatedData) 
         }catch(error){
            window.alert("Error al crear el personaje")
         }
     }
-    
 
     return(
-        <form onSubmit={handleSubmit}>
-            <div>
-                <input  placeholder="Nombre" type="text" name="name" value={data.name} onChange={handleChange}></input>
-                <span>{errors.name}</span>
+        <form className={styles.f} onSubmit={handleSubmit}>
+            <div className={styles.formMarketing}>
+                <h2 className={styles.titulo}>Pókemon</h2>
+                <input className={styles.formInput} placeholder="Nombre" type="text" name="name" value={data.name} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.name}</span>
+                
             </div>
-            <div>
-                <input  placeholder="Imagen" type="file" name="image" value={data.image} onChange={handleChange}></input>
-                <span>{errors.image}</span>
+            <div  className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Imagen" type="text" name="image" value={data.image} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.image}</span>
             </div>
-            <div>
-                <input  placeholder="Hp" type="number" name="hp" value={data.hp} onChange={handleChange}></input>
-                <span>{errors.hp}</span>
+            <div  className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Hp" type="number" name="hp" value={data.hp} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.hp}</span>
             </div>
-            <div>
-                <input  placeholder="Ataque" type="number" name="attack" value={data.attack} onChange={handleChange}></input>
-                <span>{errors.attack}</span>
+            <div  className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Ataque" type="number" name="attack" value={data.attack} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.attack}</span>
             </div>
-            <div>
-                <input  placeholder="Defensa" type="number" name="defense" value={data.defense} onChange={handleChange}></input>
-                <span>{errors.defense}</span>
+            <div  className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Defensa" type="number" name="defense" value={data.defense} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.defense}</span>
             </div>
-            <div>
-                <input  placeholder="Velocidad" type="number" name="speed" value={data.speed} onChange={handleChange}></input>
-                <span>{errors.speed}</span>
+            <div  className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Velocidad" type="number" name="speed" value={data.speed} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.speed}</span>
             </div>
-            <div>
-                <input placeholder="Altura" type="number" name="height" value={data.height} onChange={handleChange}></input>
-                <span>{errors.height}</span>
+            <div  className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Altura" type="number" name="height" value={data.height} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.height}</span>
             </div>
-            <div>
-                <input  placeholder="Peso" type="number" name="weight" value={data.weight} onChange={handleChange}></input>
-                <span>{errors.weight}</span>
+            <div className={styles.formMarketing}>
+                <input className={styles.formInput} placeholder="Peso" type="number" name="weight" value={data.weight} onChange={handleChange}></input>
+                <span className={styles.span}>{errors.weight}</span>
             </div>
+            <div className={styles.form}>
+                    <img className={styles.img} src={ash}></img>
+            </div>
+            <div className={styles.form}>
+                    <img className={styles.bur} src={burbuja}></img>
+                    <h2 className={styles.h2}>Create a Pókemon!</h2>
+            </div>
+            
 
-            <label className={styles.container}>
+
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false} value= "Normal" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Normal
-            </label>
-            <label className={styles.container}>
+            </label> */}
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false} value= "Fighting" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Fighting
-            </label>
-            <label className={styles.container}>
-                <input type="checkbox" defaultChecked={false} value= "Flying" onChange={handleChangeSelect}></input>
+            </label> */}
+            <label className={styles.cbx}>
+                <input className={styles.inp} type="checkbox" defaultChecked={false} value= "Flying" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
-                Flying
+                <div className={styles.p}>Flying </div>
             </label>
-            <label className={styles.container}>
-                <input type="checkbox" defaultChecked={false}  value= "Poison" onChange={handleChangeSelect}></input>
+            <label className={styles.cbx}>
+                <input className={styles.inp} type="checkbox" defaultChecked={false}  value= "Poison" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
-                Poison
+                <div className={styles.p}>Poison </div>
             </label>
-            <label className={styles.container}>
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false}  value= "Ground" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Ground
-            </label>
-            <label className={styles.container}>
+            </label> */}
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false}  value= "Rock" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Rock
-            </label>
-            <label className={styles.container}>
-                <input type="checkbox" defaultChecked={false}  value= "Bug" onChange={handleChangeSelect}></input>
+            </label> */}
+            <label className={styles.cbx}>
+                <input className={styles.inp} type="checkbox" defaultChecked={false}  value= "Bug" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
-                Bug
+                <div className={styles.p}>Bug </div>
             </label>
-            <label className={styles.container}>
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false}  value= "Ghost" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Ghost
@@ -148,28 +159,30 @@ export default function Form(){
                 <input type="checkbox" defaultChecked={false}  value= "Steel" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Steel
-            </label>
-            <label className={styles.container}>
+            </label> */}
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false}  value= "Fighting" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Fighting
-            </label>
-            <label className={styles.container}>
-                <input type="checkbox" defaultChecked={false}  value= "Fire" onChange={handleChangeSelect}></input>
+            </label> */}
+            <label className={styles.cbx}>
+                <input className={styles.inp} type="checkbox" defaultChecked={false}  value= "Fire" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
-                Fire
+                <div className={styles.p}>Fire </div>
             </label>
-            <label className={styles.container}>
-                <input type="checkbox" defaultChecked={false} value= "Water" onChange={handleChangeSelect}></input>
+            <label className={styles.cbx}>
+                <input className={styles.inp} type="checkbox" defaultChecked={false} value= "Water" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
-                Water
+                <div className={styles.p}>Water </div>
             </label>
-            <label className={styles.container}>
-                <input type="checkbox" defaultChecked={false} value= "Grass" onChange={handleChangeSelect}></input>
+            
+            <label className={styles.cbx}>
+                <input className={styles.inp} type="checkbox" defaultChecked={false} value= "Grass" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
-                Grass
+                <div className={styles.p}>Grass </div>
+                
             </label>
-            <label className={styles.container}>
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false} value= "Electric" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Electric
@@ -188,8 +201,8 @@ export default function Form(){
                 <input type="checkbox" defaultChecked={false} value= "Dragon" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Dragon
-            </label>
-            <label className={styles.container}>
+            </label> */}
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false} value= "Dark" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Dark
@@ -198,8 +211,8 @@ export default function Form(){
                 <input type="checkbox" defaultChecked={false} value= "Fairy" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Fairy
-            </label>
-            <label className={styles.container}>
+            </label> */}
+            {/* <label className={styles.container}>
                 <input type="checkbox" defaultChecked={false} value= "Unknown" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Unknown
@@ -208,10 +221,9 @@ export default function Form(){
                 <input type="checkbox" defaultChecked={false} value= "shadow" onChange={handleChangeSelect}></input>
                 <div className={styles.checkmark}></div>
                 Shadow
-            </label>
-
+            </label> */}
+            <button className={styles.boton} type="submit">Crear</button>
             
-            <button type="submit">Crear</button>
         </form>
     )
 }

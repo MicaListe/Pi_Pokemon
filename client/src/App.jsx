@@ -7,7 +7,7 @@ import Detail from "../src/Components/Detail/Detail"
 import PokeCards from './Components/Cards pokemon/pokeCards'
 import Landing from "../src/Components/Landing/Landing page"
 import NavBar from '../src/Components/NavBar/Navbar'
-import Filtros from "../src/Components/Filtros/Filtros"
+
 
 
 function App() {
@@ -29,8 +29,6 @@ function App() {
           }
           if (!personajeExist){
             setCharacters((char)=>[...char, { name: pokemonName }])
-          }else{
-            window.alert("El personaje ya fue agregado")
           }
           
         }else{

@@ -1,0 +1,164 @@
+.f{
+  background: linear-gradient(to right, #f5f2f2, #f5bca5); 
+  height: 2000px;
+  width: 2050px;
+}
+
+.form {
+  background: linear-gradient(to left, #fc9898, #c5a5f5); 
+  /* padding:70px; */
+  /* padding-top: 300px; */
+  border-radius: 10px;
+  /* align-items: center; */
+  height:490px;
+  width: 400px;
+  position: relative;
+  margin-left: 500px;
+  margin-top: -290px
+  
+}
+   
+.formInput {
+  /* width: 100%; */
+  margin-bottom: 1.60em;
+  width:200px;
+  height: 5px;
+  border-radius: 5px;
+  border: 1px solid rgb(10, 10, 10);
+  padding: 1em;
+  font-family: 'Inter', sans-serif;
+  top: 230px;
+  position: relative;
+  z-index:1;
+  right: 300px;
+  background-color: white;
+  color:black;
+}
+  
+.formInput:focus {
+  border: 1px solid #639;
+  outline: none;
+}
+
+.span{
+  position: absolute;
+  color: rgb(2, 1, 2);
+  left:650px;
+  margin-top:208px;
+  z-index:1;
+}
+  
+.formMarketing {
+  /* display: flex; */
+  align-items: center;
+}
+  
+.formMarketing > input {
+  margin-right: 0.625em;
+}
+  
+.formMarketing > label {
+  color: rgb(6, 6, 6);
+}
+
+.cbx input {
+  position: relative;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+ 
+.cbx {
+  display: flex;
+  position: relative;
+  cursor: pointer;
+  font-size: 20px;
+  user-select: none;
+  color: black;
+  left: 550px;
+  padding: 2.6px;
+  top:-215px;
+  z-index:1;
+}
+ 
+
+.checkmark {
+  position: relative;
+  height: 1.3em;
+  width: 1.3em;
+  background: #f4f4f4;
+  border-radius: 5px;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.30), 0px 1px 1px rgba(0,5);
+}
+ 
+
+.cbx input:checked ~ .checkmark {
+  background-image: linear-gradient(#fc9898,#fc9898)
+}
+ 
+
+.checkmark:after {
+  
+  position: absolute;
+}
+ 
+
+.cbx input:checked .checkmark:after {
+  display: block;
+}
+ 
+
+.cbx .checkmark:after {
+  left: 0.45em;
+  top: 0.25em;
+  width: 0.25em;
+  height: 0.5em;
+  border: solid white;
+  border-width: 0 0.15em 0.15em 0;
+  transform: rotate(45deg);
+} 
+
+.p{
+  margin-left: 20px;
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.img{
+  height:800px;
+  margin-left:500px;
+  margin-top:30px
+}
+.bur{
+  height: 300px;
+  margin-left:750px;
+  margin-top:-280px;
+  position: absolute;
+  transform: rotate(10deg);
+}
+.h2{
+  position: relative;
+  margin-left:1050px;
+  color:black;
+  z-index:1;
+  top:-230px;
+  font-size: 35px;
+  /* transform: rotate(5deg); */
+}
+.titulo{
+  z-index:1;
+  position: absolute;
+  top:140px;
+  color: black;
+  left:636px;
+  font-size: 35px;
+}
+.boton{
+  position: absolute;
+  top: 850px;
+  left:710px;
+  transform: translate(-50%, -50%);
+  color:#aa6ce4;
+  background-color: rgb(251, 253, 253);
+}

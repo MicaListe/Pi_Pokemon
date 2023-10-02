@@ -29,9 +29,9 @@
 }
 
 .boton{
-position: absolute;
-  top: 750px;
-  right:1135px;
-  transform: translate(-50%, -50%);
-  background-color: rgb(220, 225, 225);
+    position: absolute;
+    top: 750px;
+    right:1135px;
+    transform: translate(-50%, -50%);
+    background-color: rgb(220, 225, 225);
 }

@@ -85,27 +85,27 @@ export default function PokeCards(){
     } catch (error) {
       console.error(error);
     }
-  };
+  }
+  
   if (loading) {
-    return <div className={styles.loader}/>;
+    return <div className={styles.loader}></div>
   }
 
   return (
     <div className={styles.FlexContainer}>
      <Filtered types={types} setTypes={setTypes}></Filtered>
-      {data.map((element) => (
+      {pokemons.map((element) => (
         <Card
           key={element.id}
           id={element.id}
           name={element.name}
           image={element.image}
           types={element.types}
-          
         />
       ))}
       <div>
-        <button onClick={handlePrevPage} disabled={currentPage === 1}>Previous</button>
-        <button onClick={handleNextPage}>Next</button>
+        <button className={styles.prev} onClick={handlePrevPage} disabled={currentPage === 1}>Previous</button>
+        <button className={styles.next} onClick={handleNextPage}>Next</button>
       </div>
     </div>
   );

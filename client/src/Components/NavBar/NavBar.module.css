@@ -4,6 +4,15 @@
   padding-left: 18px;
   border-radius: 10px;
   /* margin:20px */
+  /* position:fixed; */
+  position: absolute;
+  background-color: white;
+  display:flex;
+  flex-direction: column;
+  width: 100vw;
+  align-items:center;
+  z-index: 1000;
+
 }
   
 .botonHome {

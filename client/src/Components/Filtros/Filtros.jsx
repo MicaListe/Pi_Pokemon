@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from "./Filtros.module.css"
 import { filterType, filterOrigin, orderAsc, orderDesc } from "../../Redux/actions"
 
 export default function Filtered({ types, setTypes }) {
@@ -44,18 +45,22 @@ export default function Filtered({ types, setTypes }) {
   };
 
   const handleOrderDesc = async () => {
+    
+
     try {
+      console.log("fuciona")
       await dispatch(orderDesc());
+
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
-      <div>
-        <label>Filtrar por Tipo:</label>
-        <select value={selectedType} onChange={(e) => handleTypeChange(e.target.value)}>
+    <div className={styles.filtro} >
+      <div className={styles.filtrar}>
+        <label className={styles.sub}>Filtrar por Tipo:</label>
+        <select  value={selectedType} onChange={(e) => handleTypeChange(e.target.value)}>
           <option value="">Todos</option>
           {types.map((type) => (
             <option key={type} value={type}>
@@ -64,23 +69,20 @@ export default function Filtered({ types, setTypes }) {
           ))}
         </select>
       </div>
-      <div>
-        <label>Filtrar por Origen:</label>
-        <select value={selectedOrigin} onChange={(e) => handleOriginChange(e.target.value)}>
+      <div className={styles.filt}>
+        <label className={styles.subtitulo}>Filtrar por Origen:</label>
+        <select  value={selectedOrigin} onChange={(e) => handleOriginChange(e.target.value)}>
           <option value="">Todos</option>
           <option value="API">API</option>
           <option value="DB">Base de Datos</option>
         </select>
       </div>
-      <div>
-        <button onClick={handleOrderAsc}>Ordenar Ascendente</button>
-        <button onClick={handleOrderDesc}>Ordenar Descendente</button>
+      
+      
+      <div className={styles.boton}>
+        <button className={styles.asc} onClick={handleOrderAsc}> Ascendente</button>
+        <button className={styles.desc} onClick={handleOrderDesc}>Descendente</button>
       </div>
-      <ul>
-        {pokemons.map((pokemon) => (
-          <li key={pokemon.id}>{pokemon.name}</li>
-        ))}
-      </ul>
     </div>
   );
 }

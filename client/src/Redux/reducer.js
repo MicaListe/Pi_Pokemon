@@ -21,7 +21,6 @@ const reducer = (state = initialState, action) => {
             };
         case FILTER_TYPE:
             const typeToFilter = action.payload;
-            console.log(action.payload);
             if (typeToFilter === "") {
                 return { ...state, filteredPokemons: state.pokemons }; // Mostrar todos los pokemons
             } else {
@@ -32,7 +31,7 @@ const reducer = (state = initialState, action) => {
                 return { ...state, filteredPokemons: filteredByType }; // Filtrar por tipo
             }
         case FILTER_ORIGIN:
-            console.log(state);
+            console.log("hola",filteredPokemons)
             const originToFilter = action.payload;
             if (originToFilter === "") {
                 return { ...state, filteredPokemons: state.pokemons }; // Mostrar todos los pokemons
@@ -53,16 +52,16 @@ const reducer = (state = initialState, action) => {
                 return { ...state, filteredPokemons: filteredByDb }; // Filtrar por origen DB
             }
         case ORDER_ASC:
-            console.log(state);
             const sortedAsc = [...state.filteredPokemons].sort((a, b) => a.id - b.id);
             console.log({ ...state, filteredPokemons: sortedAsc });
             return { ...state, filteredPokemons: sortedAsc }; // Ordenar ascendente
         case ORDER_DESC:
-            console.log(state);
             const sortedDesc = [...state.filteredPokemons].sort(
             (a, b) => b.id - a.id
             );
+            console.log(sortedDesc)
             return { ...state, filteredPokemons: sortedDesc }; // Ordenar descendente
+            
         default:
             return state;
     }

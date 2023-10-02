@@ -81,6 +81,7 @@ const detailPokemon = async (req, res) => {
       } else {
         res.status(404).json({ message: "Not found in database" });
       }
+      console.log("hola",pokemonData)
     } else if (esEntero(id)) {
       const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
 

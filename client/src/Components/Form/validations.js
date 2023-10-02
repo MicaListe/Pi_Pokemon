@@ -1,7 +1,9 @@
 export default function Validation(inputs){
     const regexName= /^[A-Za-z]{1,15}$/
     const regexAbilities=/^[0-9]+$/
-    const regexFile= /\.(jpg|png|gif|JPG|PNG|GIF)$/
+    // const regexFile= /\.(jpg|png|gif|JPG|PNG|GIF)$/
+    // const regexFile=/(http(s?):)([/|.|\w|\s|-])*.(?:jpg|gif|png)/
+    const regexFile= /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
 
 
     function imageVerification(inputs){

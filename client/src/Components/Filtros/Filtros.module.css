@@ -1,0 +1,33 @@
+.filtro{
+    position:absolute;
+    z-index:1;
+    top:10px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+    right:1400px;   
+    
+}
+
+
+.boton{
+    position: absolute;
+    left:250px;
+    height:39px; 
+    justify-content: space-between;
+    
+}
+.asc{
+    height:35px;
+    background-color: white; 
+    border: 2px solid #646cffaa;
+    color:#646cffaa;
+    margin:10px;
+}
+.desc{
+    height:35px;
+    background-color: white; 
+    border: 2px solid #646cffaa;
+    color:#646cffaa;
+}

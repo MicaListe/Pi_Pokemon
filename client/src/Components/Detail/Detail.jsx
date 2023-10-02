@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import { useState, useEffect } from "react"
 import styles from "./Detail.module.css"
 
+
 export default function Detail() {
   const { id } = useParams()
   const [character, setCharacter] = useState([])
@@ -32,7 +33,7 @@ export default function Detail() {
       <img className={styles.img} src={character.image} alt={character.name} />
       <div className={styles.progress}>
         {loading ? (
-          <p>Cargando...</p>
+          <div className={styles.loader}></div>
         ) : character.name && (
           <div className={styles.progressBar}>
             <h2 className={styles.name}>{character.name}</h2>
@@ -76,7 +77,7 @@ export default function Detail() {
                   <p><b>Weight: </b></p>
                   <div className={styles.progressBarContainer}>
                   <div className={styles.progressBarFill} style={{ width: `${character.weight}%` }}/>
-                  <div className={styles.porcentaje}>{character.weight + "k"}</div>
+                  <div className={styles.porcentaje}>{character.weight + "kg"}</div>
                 </div>
               </div>
             </div> 
